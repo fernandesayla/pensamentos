@@ -42,9 +42,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Pensamentos" image="quotes" id="rnE-xN-rg1"/>
                     <connections>
-                        <outlet property="imPhoto" destination="x4k-4M-3wj" id="R0X-mm-Sjl"/>
-                        <outlet property="lbAuthor" destination="rhK-Wv-4l9" id="GGJ-rf-NYp"/>
-                        <outlet property="lbQuotes" destination="S7Z-MS-Z4Q" id="o4p-ll-l7D"/>
+                        <outlet property="ivPhoto" destination="x4k-4M-3wj" id="IX5-FB-2IM"/>
+                        <outlet property="lbAuthor" destination="rhK-Wv-4l9" id="CbQ-IN-Ewt"/>
+                        <outlet property="lbQuote" destination="S7Z-MS-Z4Q" id="Vmb-qa-hHJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -66,20 +66,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mudar apos alguns segundos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3k-BU-HeP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mudar apos X segundos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3k-BU-HeP">
                                 <rect key="frame" x="0.0" y="113" width="375" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ZF-Rf-aRJ">
-                                <rect key="frame" x="163" y="63" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="FUR-XO-NwO">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="FUR-XO-NwO">
                                 <rect key="frame" x="43" y="164" width="281" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeTimeInterval:" destination="ZIr-UB-AJU" eventType="touchUpInside" id="TgS-U8-Agd"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Esquema de cores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x56-Cb-dT7">
                                 <rect key="frame" x="-4" y="228" width="375" height="21"/>
@@ -89,18 +88,34 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eYh-ai-EUM">
-                                <rect key="frame" x="45" y="293" width="277" height="28"/>
+                                <rect key="frame" x="45" y="293" width="277" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Claro"/>
+                                    <segment title="Escuro"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeColorScheme:" destination="ZIr-UB-AJU" eventType="valueChanged" id="g52-Gi-ypW"/>
+                                </connections>
                             </segmentedControl>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ZF-Rf-aRJ">
+                                <rect key="frame" x="164" y="57" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeAutorefresh:" destination="ZIr-UB-AJU" eventType="valueChanged" id="o0X-PG-c6d"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="lAX-5D-5JJ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Configuracoes" image="settings" id="ZT7-WQ-dwu"/>
+                    <connections>
+                        <outlet property="lbTimeInterval" destination="h3k-BU-HeP" id="L0K-gd-gHZ"/>
+                        <outlet property="scColorScheme" destination="eYh-ai-EUM" id="VcJ-fN-H5J"/>
+                        <outlet property="slTimeInterval" destination="FUR-XO-NwO" id="TXa-ch-knJ"/>
+                        <outlet property="swAutorefresh" destination="4ZF-Rf-aRJ" id="EwD-KV-b3H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PDu-7h-G5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

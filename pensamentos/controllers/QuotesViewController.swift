@@ -10,9 +10,14 @@ import UIKit
 
 class QuotesViewController: UIViewController {
 
-    @IBOutlet weak var imPhoto: UIImageView!
+    
+    @IBOutlet weak var ivPhoto: UIImageView!
+    
     @IBOutlet weak var lbAuthor: UILabel!
-    @IBOutlet weak var lbQuotes: UILabel!
+    
+    
+    @IBOutlet weak var lbQuote: UILabel!
+    
     
     let config = Configuration.shared
     
@@ -66,7 +71,9 @@ class QuotesViewController: UIViewController {
         }
     }
 
-   
+    
+ 
+ 
 
 }
 
