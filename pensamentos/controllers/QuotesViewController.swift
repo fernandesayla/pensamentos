@@ -38,6 +38,7 @@ class QuotesViewController: UIViewController {
     }
     
     func formatView() {
+        /**/
         view.backgroundColor = config.colorScheme == 0 ? .white : UIColor(red: 156.0/255.0, green: 68.0/255.0, blue: 15.0/255.0, alpha: 1.0)
         lbQuote.textColor = config.colorScheme == 0 ? .black : .white
         lbAuthor.textColor = config.colorScheme == 0 ? UIColor(red: 192.0/255.0, green: 96.0/255.0, blue: 49.0/255.0, alpha: 1.0) : .yellow
