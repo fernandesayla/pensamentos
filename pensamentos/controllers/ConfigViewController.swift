@@ -32,7 +32,7 @@ class ConfigViewController: UIViewController {
     func changeTimeIntervalLabel(with value: Double) {
         lbTimeInterval.text = "Mudar após \(Int(value)) segundos"
     }
-    
+    /**/
     @IBAction func changeAutorefresh(_ sender: UISwitch) {
         config.autorefresh = sender.isOn
     }
